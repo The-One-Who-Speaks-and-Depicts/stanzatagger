@@ -57,7 +57,7 @@ class Document(object):
         return len(new_sentences)
 
     def load_from_file(self, filename, sample_ratio=1.0, cut_first=-1):
-        new_sents = self._load(open(filename), sample_ratio, cut_first)
+        new_sents = self._load(open(filename, encoding='utf-8'), sample_ratio, cut_first)
         logger.info("{} sentences loaded from file {}".format(new_sents, filename))
 
     def load_from_string(self, s, sample_ratio=1.0, cut_first=-1):
@@ -89,7 +89,7 @@ class Document(object):
             f.write("\n")
 
     def write_to_file(self, filename, pred=True):
-        self._write(open(filename, 'w'), pred=pred)
+        self._write(open(filename, 'w', encoding='utf-8'), pred=pred)
         logger.info("Predictions written to file {}".format(filename))
 
     def write_to_string(self, pred=True):
